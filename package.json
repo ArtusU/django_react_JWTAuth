@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rmdir -rf ../backend/build && react-scripts build && copy -r build ../backend/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
