@@ -110,6 +110,31 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
+
+export const reset_password = (email) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ email });
+
+    try {
+        await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/reset_password/`, body, config);
+
+        dispatch({
+            type: PASSWORD_RESET_SUCCESS
+        });
+    } catch (err) {
+        dispatch({
+            type: PASSWORD_RESET_FAIL
+        });
+    }
+};
+
+
+
 export const logout = () => dispatch => {
     dispatch({
         type: LOGOUT
